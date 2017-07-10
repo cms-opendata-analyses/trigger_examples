@@ -110,13 +110,13 @@ Then follow these steps:
 - Obtain the code from git:
 
   ```
-  git clone https://github.com/caredg/cms_legacy_data.git
+  git clone https://github.com/caredg/cms_legacy_data.git CMSOpenData
   ```
 
-- Go to the TriggerInfo/TriggerInfoAnalyzer area.  Note that the code lives under `src`
+- Go to the CMSOpenData/TriggerInfo/TriggerInfoAnalyzer area.  Note that the code lives under `src`
 
   ```
-  cd TriggerInfo/TriggerInfoAnalyzer
+  cd CMSOpenData/TriggerInfo/TriggerInfoAnalyzer
   ```
 
 - Compile everything:
@@ -128,7 +128,7 @@ Then follow these steps:
 - Make a soft link to the python configuration file
 
 ```
-ln -s TriggerInfo/TriggerInfoAnalyzer/python/triggerinfoanalyzer_cfg.py .
+ln -s python/triggerinfoanalyzer_cfg.py .
 ```
 
 - Run the CMSSW executable in the background
