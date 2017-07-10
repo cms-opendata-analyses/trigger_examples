@@ -69,13 +69,12 @@ analyzers pulling out the trigger information.
 You can use the corresponding analyzers directly - see their cfi files in 
 the python subdirectory - or copy relevant code pieces into your modules.
 
-    - TriggerSummaryAnalyzerAOD: analyser printing the content of the TriggerEvent product
-    - HLTEventAnalyzerAOD: analyser combining the information from TriggerResults and TriggerEvent products
+- TriggerSummaryAnalyzerAOD: analyser printing the content of the TriggerEvent product
+- HLTEventAnalyzerAOD: analyser combining the information from TriggerResults and TriggerEvent products
 
-    The HLTEventAnalyzer plugin make use of the helper class [HLTConfigProvider](https://github.com/cms-sw/cmssw/blob/CMSSW_4_2_X/HLTrigger/HLTcore/interface/HLTConfigProvider.h "HLTConfigProvider") (also in [HLTrigger/HLTcore](https://github.com/cms-sw/cmssw/tree/CMSSW_4_2_X/HLTrigger/HLTcore "HLTrigger/HLTcore")), 
-which extracts the HLT configuration (paths, modules) from the provenance. 
+The HLTEventAnalyzer plugin make use of the helper class [HLTConfigProvider](https://github.com/cms-sw/cmssw/blob/CMSSW_4_2_X/HLTrigger/HLTcore/interface/HLTConfigProvider.h "HLTConfigProvider") (also in [HLTrigger/HLTcore](https://github.com/cms-sw/cmssw/tree/CMSSW_4_2_X/HLTrigger/HLTcore "HLTrigger/HLTcore")), which extracts the HLT configuration (paths, modules) from the provenance. 
 
-    Note: this helper class must be initialised calling it's init(...) 
+Note: this helper class must be initialised calling it's init(...) 
 from the beginRun() method of your plugin using this helper class. The reason 
 that it has to be (re-)initialised in beginRun() is that the HLT 
 configuration can (only) change at the boundary between runs. 
@@ -83,4 +82,63 @@ configuration can (only) change at the boundary between runs.
 Original Source: [Persistent Trigger Results Objects](https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideHighLevelTrigger#Persistent_Trigger_Results_Objec "Persistent Trigger Results Objects") 
 
 
+
+## Usage Instruction
+
+First you have to create a [VM](http://opendata.cern.ch/VM/CMS "CMS Open Data Portal") from the CMS Open Data website. 
+
+Then follow these steps:
+
+- Create a CMSSW environment: 
+
+    ```
+    cmsrel CMSSW_4_2_8
+    ```
+
+- Change to the CMSSW_4_2_8/src/ directory:
+
+    ```
+    cd CMSSW_4_2_8/src/
+    ```
+
+- Initialize the CMSSW environment:
+
+  ```
+  cmsenv
+  ```
+
+- Obtain the code from git:
+
+  ```
+  git clone https://github.com/caredg/cms_legacy_data.git
+  ```
+
+- Go to the TriggerInfo/TriggerInfoAnalyzer area.  Note that the code lives under `src`
+
+  ```
+  cd TriggerInfo/TriggerInfoAnalyzer
+  ```
+
+- Compile everything:
+
+  ```
+  scram b
+  ```
+
+- Make a soft link to the python configuration file
+
+```
+ln -s TriggerInfo/TriggerInfoAnalyzer/python/triggerinfoanalyzer_cfg.py .
+```
+
+- Run the CMSSW executable in the background
+
+```
+cmsRun triggerinfoanalyzer_cfg.py > full.log 2>&1 &
+```
+-Check the developmente of the job:
+
+```
+tailf full.log
+```
 
