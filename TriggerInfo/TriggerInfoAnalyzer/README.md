@@ -30,7 +30,7 @@ Physically, an event is the result of a single readout of the detector electroni
 - the result of the HLT selections (HLT trigger bits)
 - and some of the higher-level objects created during HLT processing.
 
-Original Source: [TriggerSystem][https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookCMSSWFramework#TriggerSystem "TriggerSystem"]
+Original Source: [TriggerSystem](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookCMSSWFramework#TriggerSystem "TriggerSystem")
 
 
 ### The HLT
@@ -39,7 +39,7 @@ The HLT contains many trigger paths, each corresponding to a dedicated trigger (
 In general it is expected that all HLT trigger paths are run, even if the event is already accepted by a path. In case this turns out to be too time-consuming, a truncated mode of HLT operations should be foreseen where the HLT short-circuits after the first accept (and after the triggers needed to classify the event for a primary data set and output stream are computed) and does not run the rest of the triggers. Presumably, the triggers not run online could be run in the offline reconstruction step to compute all trigger bits (for events written out) in order to get a complete trigger picture allowing trigger efficiency studies.
 Each HLT trigger path must be seeded by one or more L1 trigger bit seeds: the first filter module in each HLT path is looking for a suitable L1 seed (consisting of L1 bit[s] and L1 object[s]) as a starting point for that specific HLT trigger.
 
-Original Source: [SWGuideHighLevelTrigger][https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideHighLevelTrigger#How_it_works "SWGuideHighLevelTrigger"]
+Original Source: [SWGuideHighLevelTrigger](https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideHighLevelTrigger#How_it_works "SWGuideHighLevelTrigger")
 
 ### Persistent Trigger Results Objects and Available Software
 
@@ -58,21 +58,21 @@ all the usual "trigger bits", including:
 which module instances on the path encountered un-recoverable 
 errors.
 
-    The corresponding code can be found in [DataFormats/Common/interface/TriggerResults.h][https://github.com/cms-sw/cmssw/blob/CMSSW_4_2_X/DataFormats/Common/interface/TriggerResults.h "TriggerResults.h"] and [DataFormats/Common/interface/HLTGlobalStatus.h][https://github.com/cms-sw/cmssw/blob/CMSSW_4_2_X/DataFormats/Common/interface/HLTGlobalStatus.h "HLTGlobalStatus.h"]
+    The corresponding code can be found in [DataFormats/Common/interface/TriggerResults.h](https://github.com/cms-sw/cmssw/blob/CMSSW_4_2_X/DataFormats/Common/interface/TriggerResults.h "TriggerResults.h") and [DataFormats/Common/interface/HLTGlobalStatus.h](https://github.com/cms-sw/cmssw/blob/CMSSW_4_2_X/DataFormats/Common/interface/HLTGlobalStatus.h "HLTGlobalStatus.h")
 
 - TriggerEvent: summarising the "L3" trigger collections and "L3" filter decisions.  
 
-    The corresponding code can be found in [DataFormats/HLTReco/interface/TriggerEvent.h][https://github.com/cms-sw/cmssw/blob/CMSSW_4_2_X/DataFormats/HLTReco/interface/TriggerEvent.h "TriggerEvent.h"]
+    The corresponding code can be found in [DataFormats/HLTReco/interface/TriggerEvent.h](https://github.com/cms-sw/cmssw/blob/CMSSW_4_2_X/DataFormats/HLTReco/interface/TriggerEvent.h "TriggerEvent.h")
 
-Additionally, the package [HLTrigger/HLTcore][https://github.com/cms-sw/cmssw/tree/CMSSW_4_2_X/HLTrigger/HLTcore "HLTrigger/HLTcore"] contains several 
+Additionally, the package [HLTrigger/HLTcore](htts://github.com/cms-sw/cmssw/tree/CMSSW_4_2_X/HLTrigger/HLTcore "HLTrigger/HLTcore") contains several 
 analyzers pulling out the trigger information. 
 You can use the corresponding analyzers directly - see their cfi files in 
 the python subdirectory - or copy relevant code pieces into your modules.
 
-    - TriggerSummaryAnalyzerAOD - analyser printing the content of the TriggerEvent product
-    - HLTEventAnalyzerAOD - analyser combining the information from TriggerResults and TriggerEvent products
+    - TriggerSummaryAnalyzerAOD: analyser printing the content of the TriggerEvent product
+    - HLTEventAnalyzerAOD: analyser combining the information from TriggerResults and TriggerEvent products
 
-    The HLTEventAnalyzer plugin make use of the helper class [HLTConfigProvider][https://github.com/cms-sw/cmssw/blob/CMSSW_4_2_X/HLTrigger/HLTcore/interface/HLTConfigProvider.h "HLTConfigProvider"] (also in [HLTrigger/HLTcore][https://github.com/cms-sw/cmssw/tree/CMSSW_4_2_X/HLTrigger/HLTcore "HLTrigger/HLTcore"]), 
+    The HLTEventAnalyzer plugin make use of the helper class [HLTConfigProvider](https://github.com/cms-sw/cmssw/blob/CMSSW_4_2_X/HLTrigger/HLTcore/interface/HLTConfigProvider.h "HLTConfigProvider") (also in [HLTrigger/HLTcore](https://github.com/cms-sw/cmssw/tree/CMSSW_4_2_X/HLTrigger/HLTcore "HLTrigger/HLTcore")), 
 which extracts the HLT configuration (paths, modules) from the provenance. 
 
     Note: this helper class must be initialised calling it's init(...) 
@@ -80,7 +80,7 @@ from the beginRun() method of your plugin using this helper class. The reason
 that it has to be (re-)initialised in beginRun() is that the HLT 
 configuration can (only) change at the boundary between runs. 
 
-Original Source: [Persistent Trigger Results Objects][https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideHighLevelTrigger#Persistent_Trigger_Results_Objec "Persistent Trigger Results Objects"] 
+Original Source: [Persistent Trigger Results Objects](https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideHighLevelTrigger#Persistent_Trigger_Results_Objec "Persistent Trigger Results Objects") 
 
 
 
