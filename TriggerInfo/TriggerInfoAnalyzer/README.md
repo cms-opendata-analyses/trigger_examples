@@ -136,6 +136,7 @@ ln -s TriggerInfo/TriggerInfoAnalyzer/python/triggerinfoanalyzer_cfg.py .
 ```
 cmsRun triggerinfoanalyzer_cfg.py > full.log 2>&1 &
 ```
+
 - Check the development of the job:
 
 ```
