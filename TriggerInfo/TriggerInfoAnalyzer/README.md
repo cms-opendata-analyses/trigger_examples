@@ -110,13 +110,21 @@ Then follow these steps:
 - Obtain the code from git:
 
   ```
-  git clone https://github.com/caredg/cms_legacy_data.git CMSOpenData
+  git clone https://github.com/caredg/cms_legacy_data.git CMSOpenData_temp
   ```
 
-- Go to the CMSOpenData/TriggerInfo/TriggerInfoAnalyzer area.  Note that the code lives under `src`
+- Move the plugin to the `src` area and remove the temporary directory:
 
   ```
-  cd CMSOpenData/TriggerInfo/TriggerInfoAnalyzer
+  mv CMSOpenData_temp/{.,}* .
+  rm -rf CMSOpenData_temp  
+  ```
+
+
+- Go to the TriggerInfo/TriggerInfoAnalyzer area.  Note that the code lives under `src`
+
+  ```
+  cd TriggerInfo/TriggerInfoAnalyzer
   ```
 
 - Compile everything:
