@@ -110,7 +110,7 @@ Then follow these steps:
 - Obtain the code from git (currently the master branch for 2011 data):
 
   ```
-  git clone https://github.com/caredg/cms_legacy_data.git CMSOpenData
+  git clone https://github.com/caredg/cms_legacy_data.git CMSOpenData_temp
   ```
 
 - Move the plugin to the `src` area and remove the temporary directory:
