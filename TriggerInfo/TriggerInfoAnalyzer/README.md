@@ -92,13 +92,13 @@ Then follow these steps:
 - Create a CMSSW environment: 
 
     ```
-    cmsrel CMSSW_4_2_8
+    cmsrel CMSSW_5_3_32
     ```
 
-- Change to the CMSSW_4_2_8/src/ directory:
+- Change to the CMSSW_5_3_32/src/ directory:
 
     ```
-    cd CMSSW_4_2_8/src/
+    cd CMSSW_5_3_32/src/
     ```
 
 - Initialize the CMSSW environment:
@@ -107,16 +107,24 @@ Then follow these steps:
   cmsenv
   ```
 
-- Obtain the code from git:
+- Obtain the code from git (currently the master branch for 2011 data):
 
   ```
   git clone https://github.com/caredg/cms_legacy_data.git CMSOpenData
   ```
 
-- Go to the CMSOpenData/TriggerInfo/TriggerInfoAnalyzer area.  Note that the code lives under `src`
+- Move the plugin to the `src` area and remove the temporary directory:
 
   ```
-  cd CMSOpenData/TriggerInfo/TriggerInfoAnalyzer
+  mv CMSOpenData_temp/{.,}* .
+  rm -rf CMSOpenData_temp  
+  ```
+
+
+- Go to the TriggerInfo/TriggerInfoAnalyzer area.  Note that the code lives under `src`
+
+  ```
+  cd TriggerInfo/TriggerInfoAnalyzer
   ```
 
 - Compile everything:
@@ -130,6 +138,15 @@ Then follow these steps:
 ```
 ln -s python/triggerinfoanalyzer_cfg.py .
 ```
+
+- Make soft links to the conditions database
+
+```
+ln -sf /cvmfs/cms-opendata-conddb.cern.ch/FT_53_LV5_AN1_RUNA FT_53_LV5_AN1
+ln -sf /cvmfs/cms-opendata-conddb.cern.ch/FT_53_LV5_AN1_RUNA.db FT_53_LV5_AN1_RUNA.db
+```
+
+Now it comes the tricky part.  If you haven't used (or tried to access) the conditions from the database, the first time you try to run with `cmsRun`, it will fail.  However, this is step seems necessary for the `SITECONF` directory to be set at `/cvmfs/cms-opendata-conddb.cern.ch/`.  The second time you try, the job will work, but it might take a long time to cache the payload files from the database.  The next attempts you try should be "normal".
 
 - Run the CMSSW executable in the background
 
