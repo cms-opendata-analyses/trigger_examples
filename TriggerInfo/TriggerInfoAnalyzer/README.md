@@ -107,19 +107,31 @@ Then follow these steps:
   cmsenv
   ```
 
-- Obtain the code from git (currently the master branch for 2011 data):
+- Obtain the code from git (in sparse mode) and move it to the `src` area:
 
+  ```   
+  git clone --no-checkout https://github.com/caredg/cms_legacy_data.git
+  cd cms_legacy_data
+  git config core.sparseCheckout true
+  echo 'TriggerInfo/TriggerInfoAnalyzer' > .git/info/sparse-checkout
+  git checkout   
+  mv TriggerInfo ../.
+  cd ..
+  rm -rf cms_legacy_data    
   ```
-  git clone https://github.com/caredg/cms_legacy_data.git CMSOpenData_temp
-  ```
+  
+  or (if you use ssh key):
 
-- Move the plugin to the `src` area and remove the temporary directory:
-
+  ```   
+  git clone --no-checkout git@github.com:caredg/cms_legacy_data.git
+  cd cms_legacy_data
+  git config core.sparseCheckout true
+  echo 'TriggerInfo/TriggerInfoAnalyzer' > .git/info/sparse-checkout
+  git checkout  
+  mv TriggerInfo ../. 
+  cd ..
+  rm -rf cms_legacy_data
   ```
-  mv CMSOpenData_temp/{.,}* .
-  rm -rf CMSOpenData_temp  
-  ```
-
 
 - Go to the TriggerInfo/TriggerInfoAnalyzer area.  Note that the code lives under `src`
 
@@ -139,14 +151,22 @@ Then follow these steps:
 ln -s python/triggerinfoanalyzer_cfg.py .
 ```
 
-- Make soft links to the conditions database
+- Make symbolic links to the conditions database
 
 ```
 ln -sf /cvmfs/cms-opendata-conddb.cern.ch/FT_53_LV5_AN1_RUNA FT_53_LV5_AN1
 ln -sf /cvmfs/cms-opendata-conddb.cern.ch/FT_53_LV5_AN1_RUNA.db FT_53_LV5_AN1_RUNA.db
 ```
 
-Now it comes the tricky part.  If you haven't used (or tried to access) the conditions from the database, the first time you try to run with `cmsRun`, it will fail.  However, this is step seems necessary for the `SITECONF` directory to be set at `/cvmfs/cms-opendata-conddb.cern.ch/`.  The second time you try, the job will work, but it might take a long time to cache the payload files from the database.  The next attempts you try should be "normal".
+- Make sure the `cms-opendata-conddb.cern.ch` directory has actually expanded in your VM.  One way of doing this is executing:
+
+```
+ls -l
+ls -l /cvmfs/
+```
+
+You should now see the `cms-opendata-conddb.cern.ch` in the `/cvmfs` area.
+
 
 - Run the CMSSW executable in the background
 
@@ -160,3 +180,4 @@ cmsRun triggerinfoanalyzer_cfg.py > full.log 2>&1 &
 tailf full.log
 ```
 
+*NOTE*: The first time you execute the job, it will take a long time (depending on your connection speed).  This is because the data base payload files will be downloaded/cached locally in the VM.  Later attempts should be faster, however.
