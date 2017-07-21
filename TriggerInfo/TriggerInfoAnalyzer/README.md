@@ -165,7 +165,7 @@ ls -l
 ls -l /cvmfs/
 ```
 
-You should now see the `cms-opendata-conddb.cern.ch` in the `/cvmfs` area.
+You should now see the `cms-opendata-conddb.cern.ch` link in the `/cvmfs` area.
 
 
 - Run the CMSSW executable in the background
@@ -180,4 +180,4 @@ cmsRun triggerinfoanalyzer_cfg.py > full.log 2>&1 &
 tailf full.log
 ```
 
-*NOTE*: The first time you execute the job, it will take a long time (depending on your connection speed).  This is because the data base payload files will be downloaded/cached locally in the VM.  Later attempts should be faster, however.
+*NOTE*: The first time you execute the job, it will take a long time (depending on your connection speed) to the point that it looks like it is not doing anything.  That is fine.  This is because the database payload files will be downloaded/cached locally in the VM.  Later attempts should be faster, however.
