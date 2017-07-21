@@ -2,7 +2,7 @@
 
 ## Description
 
-This is an example of an EDAnalyzer to extract some trigger information for CMS Open/Legacy Data. The original version works with CMS 2010 Data, but it will be tested also with later data.
+This is an example of an EDAnalyzer to extract some trigger information for CMS Open/Legacy Data. The instructions below are for 2011 Data.  Similar instructions exist for [2010 Data](https://github.com/caredg/cms_legacy_data/tree/2010/TriggerInfo/TriggerInfoAnalyzer "Instructions 2010").
 
 The skeleton of this EDAnalyzer, and/or the code snippets that can be extracted from it, could be used for physics analysis.
 
@@ -58,13 +58,13 @@ all the usual "trigger bits", including:
 which module instances on the path encountered un-recoverable 
 errors.
 
-    The corresponding code can be found in [DataFormats/Common/interface/TriggerResults.h](https://github.com/cms-sw/cmssw/blob/CMSSW_4_2_X/DataFormats/Common/interface/TriggerResults.h "TriggerResults.h") and [DataFormats/Common/interface/HLTGlobalStatus.h](https://github.com/cms-sw/cmssw/blob/CMSSW_4_2_X/DataFormats/Common/interface/HLTGlobalStatus.h "HLTGlobalStatus.h")
+    The corresponding code can be found in [DataFormats/Common/interface/TriggerResults.h](https://github.com/cms-sw/cmssw/blob/CMSSW_5_3_X/DataFormats/Common/interface/TriggerResults.h "TriggerResults.h") and [DataFormats/Common/interface/HLTGlobalStatus.h](https://github.com/cms-sw/cmssw/blob/CMSSW_5_3_X/DataFormats/Common/interface/HLTGlobalStatus.h "HLTGlobalStatus.h")
 
 - TriggerEvent: summarising the "L3" trigger collections and "L3" filter decisions.  
 
-    The corresponding code can be found in [DataFormats/HLTReco/interface/TriggerEvent.h](https://github.com/cms-sw/cmssw/blob/CMSSW_4_2_X/DataFormats/HLTReco/interface/TriggerEvent.h "TriggerEvent.h")
+    The corresponding code can be found in [DataFormats/HLTReco/interface/TriggerEvent.h](https://github.com/cms-sw/cmssw/blob/CMSSW_5_3_X/DataFormats/HLTReco/interface/TriggerEvent.h "TriggerEvent.h")
 
-Additionally, the package [HLTrigger/HLTcore](htts://github.com/cms-sw/cmssw/tree/CMSSW_4_2_X/HLTrigger/HLTcore "HLTrigger/HLTcore") contains several 
+Additionally, the package [HLTrigger/HLTcore](htts://github.com/cms-sw/cmssw/tree/CMSSW_5_3_X/HLTrigger/HLTcore "HLTrigger/HLTcore") contains several 
 analyzers pulling out the trigger information. 
 You can use the corresponding analyzers directly - see their cfi files in 
 the python subdirectory - or copy relevant code pieces into your modules.
@@ -72,7 +72,7 @@ the python subdirectory - or copy relevant code pieces into your modules.
 - TriggerSummaryAnalyzerAOD: analyser printing the content of the TriggerEvent product
 - HLTEventAnalyzerAOD: analyser combining the information from TriggerResults and TriggerEvent products
 
-The HLTEventAnalyzer plugin make use of the helper class [HLTConfigProvider](https://github.com/cms-sw/cmssw/blob/CMSSW_4_2_X/HLTrigger/HLTcore/interface/HLTConfigProvider.h "HLTConfigProvider") (also in [HLTrigger/HLTcore](https://github.com/cms-sw/cmssw/tree/CMSSW_4_2_X/HLTrigger/HLTcore "HLTrigger/HLTcore")), which extracts the HLT configuration (paths, modules) from the provenance. 
+The HLTEventAnalyzer plugin make use of the helper class [HLTConfigProvider](https://github.com/cms-sw/cmssw/blob/CMSSW_5_3_X/HLTrigger/HLTcore/interface/HLTConfigProvider.h "HLTConfigProvider") (also in [HLTrigger/HLTcore](https://github.com/cms-sw/cmssw/tree/CMSSW_5_3_X/HLTrigger/HLTcore "HLTrigger/HLTcore")), which extracts the HLT configuration (paths, modules) from the provenance. 
 
 Note: this helper class must be initialised calling it's init(...) 
 from the beginRun() method of your plugin using this helper class. The reason 
