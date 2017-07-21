@@ -110,7 +110,7 @@ Then follow these steps:
 - Obtain the code from git (in sparse mode) and move it to the `src` area:
 
   ```   
-  git clone --no-checkout https://github.com/caredg/cms_legacy_data.git
+  git clone -b 2011 --no-checkout https://github.com/caredg/cms_legacy_data.git
   cd cms_legacy_data
   git config core.sparseCheckout true
   echo 'TriggerInfo/TriggerInfoAnalyzer' > .git/info/sparse-checkout
@@ -123,7 +123,7 @@ Then follow these steps:
   or (if you use ssh key):
 
   ```   
-  git clone --no-checkout git@github.com:caredg/cms_legacy_data.git
+  git clone -b 2011 --no-checkout git@github.com:caredg/cms_legacy_data.git
   cd cms_legacy_data
   git config core.sparseCheckout true
   echo 'TriggerInfo/TriggerInfoAnalyzer' > .git/info/sparse-checkout
