@@ -2,7 +2,7 @@
 
 ## Description
 
-This is an example of an EDAnalyzer to extract some trigger information for CMS Open/Legacy Data. The original version works with CMS 2010 Data, but it will be tested also with later data.
+This is an example of an EDAnalyzer to extract some trigger information for CMS Open/Legacy Data. The instructions below work for 2010 Data.
 
 The skeleton of this EDAnalyzer, and/or the code snippets that can be extracted from it, could be used for physics analysis.
 
@@ -107,17 +107,30 @@ Then follow these steps:
   cmsenv
   ```
 
-- Obtain the code from git:
+- Obtain the code from git (in sparse mode) and move it to the `src` area:
 
+  ```   
+  git clone -b 2010 --no-checkout https://github.com/caredg/cms_legacy_data.git
+  cd cms_legacy_data
+  git config core.sparseCheckout true
+  echo 'TriggerInfo/TriggerInfoAnalyzer' > .git/info/sparse-checkout
+  git checkout   
+  mv TriggerInfo ../.
+  cd ..
+  rm -rf cms_legacy_data    
   ```
-  git clone -b 2010 https://github.com/caredg/cms_legacy_data.git CMSOpenData_temp
-  ```
+  
+  or (if you use ssh key):
 
-- Move the plugin to the `src` area and remove the temporary directory:
-
-  ```
-  mv CMSOpenData_temp/{.,}* .
-  rm -rf CMSOpenData_temp  
+  ```   
+  git clone -b 2010 --no-checkout git@github.com:caredg/cms_legacy_data.git
+  cd cms_legacy_data
+  git config core.sparseCheckout true
+  echo 'TriggerInfo/TriggerInfoAnalyzer' > .git/info/sparse-checkout
+  git checkout  
+  mv TriggerInfo ../. 
+  cd ..
+  rm -rf cms_legacy_data
   ```
 
 
