@@ -30,7 +30,7 @@ Physically, an event is the result of a single readout of the detector electroni
 - the result of the HLT selections (HLT trigger bits)
 - and some of the higher-level objects created during HLT processing.
 
-Original Source: [TriggerSystem](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookCMSSWFramework#TriggerSystem "TriggerSystem")
+Original Source: [TriggerSystem](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookCMSSWFramework?rev=11#TriggerSystem "TriggerSystem")
 
 
 ### The HLT
