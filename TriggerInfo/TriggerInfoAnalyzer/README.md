@@ -30,7 +30,7 @@ Physically, an event is the result of a single readout of the detector electroni
 - the result of the HLT selections (HLT trigger bits)
 - and some of the higher-level objects created during HLT processing.
 
-Original Source: [TriggerSystem](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookCMSSWFramework#TriggerSystem "TriggerSystem")
+Original Source: [TriggerSystem](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookCMSSWFramework?rev=10#TriggerSystemi "TriggerSystem")
 
 
 ### The HLT
@@ -39,7 +39,7 @@ The HLT contains many trigger paths, each corresponding to a dedicated trigger (
 In general it is expected that all HLT trigger paths are run, even if the event is already accepted by a path. In case this turns out to be too time-consuming, a truncated mode of HLT operations should be foreseen where the HLT short-circuits after the first accept (and after the triggers needed to classify the event for a primary data set and output stream are computed) and does not run the rest of the triggers. Presumably, the triggers not run online could be run in the offline reconstruction step to compute all trigger bits (for events written out) in order to get a complete trigger picture allowing trigger efficiency studies.
 Each HLT trigger path must be seeded by one or more L1 trigger bit seeds: the first filter module in each HLT path is looking for a suitable L1 seed (consisting of L1 bit[s] and L1 object[s]) as a starting point for that specific HLT trigger.
 
-Original Source: [SWGuideHighLevelTrigger](https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideHighLevelTrigger#How_it_works "SWGuideHighLevelTrigger")
+Original Source: [SWGuideHighLevelTrigger](https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideHighLevelTrigger?rev=120#How_it_works "SWGuideHighLevelTrigger")
 
 ### Persistent Trigger Results Objects and Available Software
 
@@ -79,7 +79,7 @@ from the beginRun() method of your plugin using this helper class. The reason
 that it has to be (re-)initialised in beginRun() is that the HLT 
 configuration can (only) change at the boundary between runs. 
 
-Original Source: [Persistent Trigger Results Objects](https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideHighLevelTrigger#Persistent_Trigger_Results_Objec "Persistent Trigger Results Objects") 
+Original Source: [Persistent Trigger Results Objects](https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideHighLevelTrigger?rev=120#Persistent_Trigger_Results_Object "Persistent Trigger Results Objects") 
 
 
 
