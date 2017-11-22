@@ -110,27 +110,27 @@ Then follow these steps:
 - Obtain the code from git (in sparse mode) and move it to the `src` area:
 
   ```   
-  git clone -b 2011 --no-checkout https://github.com/caredg/cms_legacy_data.git
-  cd cms_legacy_data
+  git clone -b 2011 --no-checkout https://github.com/cms-opendata-analyses/trigger_examples.git
+  cd trigger_examples
   git config core.sparseCheckout true
   echo 'TriggerInfo/TriggerInfoAnalyzer' > .git/info/sparse-checkout
   git checkout   
   mv TriggerInfo ../.
   cd ..
-  rm -rf cms_legacy_data    
+  rm -rf trigger_examples    
   ```
   
   or (if you use ssh key):
 
   ```   
-  git clone -b 2011 --no-checkout git@github.com:caredg/cms_legacy_data.git
-  cd cms_legacy_data
+  git clone -b 2011 --no-checkout git@github.com:cms-opendata-analyses/trigger_examples.git
+  cd trigger_examples
   git config core.sparseCheckout true
   echo 'TriggerInfo/TriggerInfoAnalyzer' > .git/info/sparse-checkout
   git checkout  
   mv TriggerInfo ../. 
   cd ..
-  rm -rf cms_legacy_data
+  rm -rf trigger_examples
   ```
 
 - Go to the TriggerInfo/TriggerInfoAnalyzer area.  Note that the code lives under `src`
