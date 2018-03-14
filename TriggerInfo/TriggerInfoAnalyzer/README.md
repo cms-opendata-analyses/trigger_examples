@@ -110,7 +110,7 @@ Then follow these steps:
 - Obtain the code from git (in sparse mode) and move it to the `src` area:
 
   ```   
-  git clone -b 2010 --no-checkout https://github.com/cms-opendata-analyses/trigger_examples.git
+  git clone -b 2010 --no-checkout git://github.com/cms-opendata-analyses/trigger_examples.git
   cd trigger_examples
   git config core.sparseCheckout true
   echo 'TriggerInfo/TriggerInfoAnalyzer' > .git/info/sparse-checkout
