@@ -15,7 +15,11 @@ process.source = cms.Source("PoolSource",
 
 #needed to get the actual prescale values used from the global tag
 process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
-process.GlobalTag.globaltag = 'GR_R_42_V25::All'
+#if taken from frontier, it should still work
+#process.GlobalTag.globaltag = 'GR_R_42_V25::All'
+#but better read from /cvmfs
+process.GlobalTag.connect = cms.string('sqlite_file:/cvmfs/cms-opendata-conddb.cern.ch/FT_R_42_V10A.db')
+process.GlobalTag.globaltag = 'FT_R_42_V10A::All'
 
 #configure the analyzer
 process.gettriggerinfo = cms.EDAnalyzer('TriggerInfoAnalyzer',

@@ -85,7 +85,7 @@ Original Source: [Persistent Trigger Results Objects](https://twiki.cern.ch/twik
 
 ## Usage Instruction
 
-First you have to create a [VM](http://opendata.cern.ch/VM/CMS "CMS Open Data Portal") from the CMS Open Data website. 
+First you have to create a [VM](http://opendata.cern.ch/record/250 "CMS Open Data Portal") from the CMS Open Data website and open de slc5 CMS shell terminal available in the Desktop.
 
 Then follow these steps:
 
@@ -150,7 +150,26 @@ Then follow these steps:
 
 ```
 ln -s python/triggerinfoanalyzer_cfg.py .
+
 ```
+
+- Make symbolic links to the conditions database
+
+```
+ln -sf /cvmfs/cms-opendata-conddb.cern.ch/FT_R_42_V10A FT_R_42_V10A
+ln -sf /cvmfs/cms-opendata-conddb.cern.ch/FT_R_42_V10A.db FT_R_42_V10A.db
+
+```
+
+- Make sure the `cms-opendata-conddb.cern.ch` directory has actually expanded in your VM.  One way of doing this is executing:
+
+```
+ls -l
+ls -l /cvmfs/
+```
+
+You should now see the `cms-opendata-conddb.cern.ch` link in the `/cvmfs` area.
+
 
 - Run the CMSSW executable in the background
 
@@ -164,3 +183,4 @@ cmsRun triggerinfoanalyzer_cfg.py > full.log 2>&1 &
 tailf full.log
 ```
 
+*NOTE*: The first time you execute the job, it will take a long time (depending on your connection speed) to the point that it looks like it is not doing anything.  That is fine.  This is because the database payload files will be downloaded/cached locally in the VM.  Later attempts should be faster, however.
